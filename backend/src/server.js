@@ -1,7 +1,8 @@
-import 'dotenv/config';
+import "dotenv/config";
 import express from "express";
 
-import connectDB from './config/db.js';
+import connectDB from "./config/db.js";
+import notesRouter from "./routers/notes.js"
 
 const PORT = process.env.PORT || 3001;
 
@@ -12,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routes
-
+app.use("/api/notes", notesRouter);
 
 // Connection to the database and server launch
 connectDB().then(() => {
